@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block title %}SOKONI Collections - Order Details{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h2 class="mb-4">Order History</h2>
+
+            {% if orders %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Order Date</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>#{{ order.order_number }}</td>
+                            <td>{{ order.order_date.strftime('%B %d, %Y') }}</td>
+                            <td>
+                                <ul>
+                                    {% for item in order.items %}
+                                    <li>{{ item.product_name }} - {{ item.quantity }} pcs</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ order.total_quantity }}</td>
+                            <td>${{ order.total_price }}</td>
+                            <td>{{ order.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="lead">You have not placed any orders yet.</p>
+                <a href="/" class="btn btn-primary btn-lg mt-4">Start Shopping</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
