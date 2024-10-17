@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
 from os import path
+from dotenv import load_dotenv
 
 db = SQLAlchemy()
 migrate = Migrate()  # Initialize Migrate without parameters
@@ -10,10 +11,15 @@ migrate = Migrate()  # Initialize Migrate without parameters
 DB_NAME = "SOKONI"
 
 def create_app():
+    load_dotenv()  # Load environment variables from .env file
+
+    database_uri = os.getenv('DATABASE_URI')
+    secret_key = os.getenv('SECRET_KEY')
+
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'nikubayaman'
+    app.config['SECRET_KEY'] = secret_key
     # Update the SQLALCHEMY_DATABASE_URI for MySQL
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Kamau%401980@localhost/SOKONI'
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     db.init_app(app)
