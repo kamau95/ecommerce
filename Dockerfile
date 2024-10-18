@@ -6,9 +6,9 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-build-essential \
-default-libmysqlclient-dev \
-&& rm -rf /var/lib/apt/lists/*
+    build-essential \
+    default-libmysqlclient-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy the current directory contents into the container at /app
 COPY . .
@@ -17,11 +17,17 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Define environment variables
-ENV FLASK_APP=website:create_app
+ENV FLASK_APP=web:create_app
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV PORT=8080
 
-# Expose the port on which Gunicorn will listen
+# Expose the port on which the app will listen
 EXPOSE $PORT
 
-# Run Gunicorn
-CMD gunicorn --bind 0.0.0.0:$PORT "website:create_app()"
+# Copy the script and make it executable
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+# Use JSON syntax for CMD
+CMD ["/app/start.sh"]
+
