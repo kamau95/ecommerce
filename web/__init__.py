@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
-from os import path
+from os import path, getenv
 from dotenv import load_dotenv
 
 db = SQLAlchemy()
@@ -13,8 +13,8 @@ DB_NAME = "SOKONI"
 def create_app():
     load_dotenv()  # Load environment variables from .env file
 
-    database_uri = os.getenv('DATABASE_URI')
-    secret_key = os.getenv('SECRET_KEY')
+    database_uri = getenv('DATABASE_URI')
+    secret_key = getenv('SECRET_KEY')
 
     app = Flask(__name__)
     app.config['SECRET_KEY'] = secret_key
