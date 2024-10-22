@@ -1,17 +1,41 @@
-E-commerce Platform
-Built with Flask Framework
-Installation & Configuration
-Ensure you have the most recent version of Python on your machine.
+# Sokoni Collections - E-commerce Platform
 
-Clone the repository using the following command:
+Sokoni Collections is a modern and responsive e-commerce platform built using the Flask framework. This platform is designed to provide a seamless shopping experience for users and a streamlined product management system for administrators. It supports essential features such as user authentication, product browsing, a shopping cart, order history, and a smooth checkout process.
 
+## Features
+
+- **User Authentication**: Secure user registration and login functionality using Flask-Login and bcrypt for password hashing.
+- **Product Listings**: Dynamic product display from the database, with filtering and search capabilities.
+- **Shopping Cart**: Users can add, update, or remove items from their cart.
+- **Checkout Process**: Seamless checkout process integrated into the order flow, ensuring an easy user experience.
+- **Order History**: Users can access their order history to view past purchases and statuses.
+- **Responsive Design**: Optimized for both desktop and mobile users through Bootstrap-based design.
+
+## Technology Stack
+
+- **Backend**: Flask (Python Framework)
+- **Database**: MySQL (Production) / SQLite (Development)
+- **Frontend**: HTML, CSS, Bootstrap, Jinja2
+- **ORM**: SQLAlchemy for database interactions
+- **Authentication**: Flask-Login
+- **Session Management**: Flask session handling
+
+## Installation and Setup
+
+### Prerequisites
+
+To run the application locally, ensure you have the following installed:
+
+- Python 3.x
+- pip (Python package installer)
+- MySQL (For production) or SQLite (For development)
+- Git
+
+### Cloning the Repository
+
+Clone the repository to your local machine:
+
+```bash
 git clone <repo-url>
-Install the necessary dependencies:
+cd sokoni-collections
 
-pip install -r requirements.txt
-Starting the Application
-To run the application, execute:
-
-python3 main.py
-Accessing the Application
-You can view the application by navigating to: http://127.0.0.1:8080 in your web browser.
