@@ -39,3 +39,21 @@ Clone the repository to your local machine:
 git clone <repo-url>
 cd sokoni-collections
 
+file structure
+ecommerce/
+│
+├── main.py                # Application entry point
+├── requirements.txt       # List of dependencies
+├── .env                   # Environment variables
+├── migrations/            # Database migrations
+├── sokoni/                # Main application folder
+│   ├── __init__.py        # Application factory
+│   ├── models.py          # Database models
+│   ├── views.py           # Application views (routes)
+│   ├── templates/         # HTML templates
+│   ├── static/            # Static files (CSS, JS, images)
+│   ├── forms.py           # WTForms for handling user input
+│   ├── auth.py            # Authentication logic
+│   ├── cart.py            # Cart management logic
+└── tests/                 # Unit tests
+
